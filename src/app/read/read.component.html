@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row bg-white">
+        <div class="col-md-12">
+           de : {{ (MailData | async)?.expeditor.userDisplayName }} <span class="userhash-display">{{ (MailData | async)?.expeditor.userHash }}</span>
+            <br>
+            sujet : {{ (MailData | async)?.data.subject }}
+        </div>
+        <div class="col-md-10 mx-auto m-3 border bg-white p-3 shadow-sm" [innerHTML]=" (MailData | async)?.data.message">
+            
+        </div>
+
+        <div class="col-12 bg-primary border-bottom p-2">
+            <span class="text-white">Instant chat</span>
+        </div>
+        <!-- Direct chat  -->
+        <div class="col-md-12 p-3 direct-chat-window" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+            <ul class="nav" *ngFor="let msg of (instantMessage | async)?.messages">
+                <li class="my-2"> {{msg.userHash}}<br> <span class="badge direct-message badge-pill pr-4 pl-3 py-2 badge-primary">{{msg.content}}</span></li>
+            </ul>    
+        </div>
+        <!-- Send New Chat  -->
+
+        
+        <div class="col-md-12 p-0">
+            <div class="input-group mb-3">
+                <input [(ngModel)]="directMessageContent" (keyup.enter)="sendNewDirectMessage()" type="text" class="form-control" placeholder="Votre message" aria-label="Votre message" aria-describedby="button-addon2">
+                <div class="input-group-append">
+                  <button (click)="sendNewDirectMessage()" class="btn btn-primary" type="button" id="button-addon2">Envoyer</button>
+                </div>
+              </div>
+
+        </div>
+    </div>
+</div>

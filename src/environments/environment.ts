@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: "AIzaSyBj8razYRcWgoxAW5erehPhQCYpoja4N5E",
+    authDomain: "bromail-53588.firebaseapp.com",
+    databaseURL: "https://bromail-53588.firebaseio.com",
+    projectId: "bromail-53588",
+    storageBucket: "bromail-53588.appspot.com",
+    messagingSenderId: "1251923901",
+    appId: "1:1251923901:web:da399c909b832ec08c64d4",
+    measurementId: "G-YM2DC4DB77"
+  }
 };
 
 /*

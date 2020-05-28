@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "bromail-53588": {
+      "hosting": {
+        "Bromail": [
+          "bromail-53588"
+        ]
+      }
+    }
+  }
+}

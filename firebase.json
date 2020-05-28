@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "Bromail",
+      "public": "dist/Bromail",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

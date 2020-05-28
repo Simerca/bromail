@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-4 maillist-left">
+
+
+    </div>
+    <div class="col-12">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>Nouveau message</h3>
+                </div>
+                <div class="col-md-12">
+                    <!-- Nouveau Mail  -->
+                    <div class="form-group">
+                        <input type="text" class="form-control" [(ngModel)]="newMessageReceiver" placeholder="Destinataire">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" [(ngModel)]="newMessageSubject" placeholder="Sujet">
+                    </div>
+                    <div class="form-group">
+                       <ckeditor [(ngModel)]="newMessageMessage" [editor]="Editor" data="<p>Hello, world!</p>"></ckeditor>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" (click)="sendMail()" class="btn btn-primary">Envoyer</button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+</div>

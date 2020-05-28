@@ -1,0 +1,49 @@
+<nav *ngIf="isLoggedIn | async" class="navbar navbar-light bg-primary p-0">
+    <a class="navbar-brand bg-secondary px-5 col-4 text-white text-center">Bromail</a>
+    <button [routerLink]="['/mailbox']" routerLinkActive="router-link-active" class="btn btn-outline-info btn-sm"   >Nouveau message</button>
+    <button (click)="onLogout()" class="btn btn-outline-danger btn-sm"   >Deconnexion</button>
+  </nav>
+  
+  <div class="row m-0 p-0">
+    <div class="col-4 m-0 p-0" *ngIf="isLoggedIn | async">
+  
+      <div class="col-md-12 m-0 p-0" >
+        <!-- Mailbox message   -->
+        <div class="row">
+        <div class="col-12 my-2">
+            <span class="text-sm text-muted">Boite de récéption</span>
+        </div>
+        <div class="col-12 my-2">
+            <div class="input-group mb-3">
+                <input type="search" (change)="onFilter($event)" class="form-control" placeholder="Rechercher" aria-label="" aria-describedby="button-addon2">
+                <div class="input-group-append">
+                    <select style="font-size: 0.8em;height: auto;" class="form-control" [(ngModel)]="searchType">
+                        <option selected value="subject">Sujet</option>
+                        <option value="user">Utilisateur</option>
+                    </select>
+                </div>
+              </div>
+        </div>
+        <div class="col-12">
+            <ul class="nav m-0" *ngFor="let mail of Mails | async">
+               <li [ngClass]="{'alert alert-primary': mail.unRead}" class="nav-item border-bottom btn btn-light p-1 text-left col-12 m-0" [routerLink]="['/read']" [queryParams]="{id :mail.idDoc }" routerLinkActive="router-link-active" >
+                {{ mail.expeditor.userDisplayName }} <span class="text-muted">{{ mail.expeditor.userHash }}</span>
+                <br>
+                <span class="mailsubject font-weight-bold">{{ mail.data.subject }}</span>
+                <br>
+                <span style="font-size:0.8em" class="text-muted">{{ mail.date * 1000 | date}}</span>
+                <br>
+                <a (click)="onDelete(mail.idDoc)" class="text-danger" style="font-size: 0.7em;;">Supprimer</a>
+              </li> 
+            </ul>
+        </div>
+
+        <!-- Mailbox message   -->
+        </div>
+      </div>
+  
+    </div>
+    <div [ngClass]="(isLoggedIn | async) ? 'col-8' : 'col-12' ">
+        <router-outlet></router-outlet>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="container bg-dark p-3 my-3 justify-content-center">
+<div class="row">
+    <div class="col-6 text-white">
+        <h1>Vous découvrez <span class="font-weight-bold">Bromail</span> ?</h1>
+        <h3>Rapide, puissant, ergonomique</h3>
+        <h4>Redefinissez le travail d'équipe en conservant les bases de l'échange Mail.</h4>
+        <h5>On y à apporter quelques modifications 🤫</h5>
+    </div>
+    <div class="col-6">
+
+        <div *ngIf="error" class="col-12 alert alert-danger">
+            Une erreur s'est produite, réesayer : {{errorMessage}}
+        </div>  
+    
+        <div class="form-row">
+            <div class="form-group col-12">
+                <label>Entrez votre email</label>
+                <input type="email" [(ngModel)]="email" class="form-control" placeholder="Email">
+            </div>
+            <div class="form-group col-12">
+                <label>Ainsi que votre mot de passe</label>
+                <input type="password" [(ngModel)]="password" class="form-control" placeholder="Mot de passe">
+            </div>
+            <div class="form-group col-12">
+                <button (click)="onLogin()" type="button" class="btn btn-primary">Se connecter</button>
+                <!-- <button (click)="onRegister()" type="button" class="btn btn-primary">S'enregistrer</button> -->
+            </div>
+            <div class="form-group col-12">
+                <!-- <button (click)="onLogin()" type="button" class="btn btn-primary">Se connecter</button> -->
+                <button (click)="onRegister()" type="button" class="btn btn-primary">S'enregistrer</button>
+            </div>
+        </div>
+    
+    </div>
+</div>
+</div>
